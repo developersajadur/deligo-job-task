@@ -1,0 +1,14 @@
+{
+  "nav": {
+    "title": "BlogSite",
+    "home": "Home",
+    "about": "About Us"
+  },
+  "home": {
+    "title": "Recent Blogs"
+  },
+  "about": {
+    "title": "About Us",
+    "content": "We build scalable multilingual blog platforms."
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "nav": {
+    "title": "BlogSite",
+    "home": "Início",
+    "about": "Sobre Nós"
+  },
+  "home": {
+    "title": "Blogs Recentes"
+  },
+  "about": {
+    "title": "Sobre Nós",
+    "content": "Criamos plataformas de blog multilíngues escaláveis."
+  }
+}
