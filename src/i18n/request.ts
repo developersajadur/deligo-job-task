@@ -1,16 +1,27 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { notFound } from 'next/navigation';
-import { getRequestConfig } from 'next-intl/server';
-import { locales } from '../app/lib/i18n';
+// /* eslint-disable @typescript-eslint/no-explicit-any */
 
+import { getRequestConfig } from 'next-intl/server';
+import { defaultLocale, locales } from '../app/lib/i18n';
+
+const messagesMap = {
+  en: () => import('../app/messages/en.json'),
+  bn: () => import('../app/messages/bn.json'),
+  pt: () => import('../app/messages/pt.json'),
+};
 
 export default getRequestConfig(async ({ locale }) => {
-  if (!locales.includes(locale as any)) {
-    notFound();
-  }
+  const resolvedLocale =
+    locale && locales.includes(locale as any)
+      ? locale
+      : defaultLocale;
 
   return {
-     locale,
-     messages: (await import(`../app/messages/${locale}.json`)).default
+    locale: resolvedLocale,
+    messages:
+      (await messagesMap[
+        resolvedLocale as keyof typeof messagesMap
+      ]()).default,
   };
 });
+
